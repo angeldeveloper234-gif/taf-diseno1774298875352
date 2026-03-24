@@ -1,81 +1,89 @@
 import { motion } from "framer-motion";
-import { HardHat, Ruler, Building2, TreePine } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 
-const items = [
+const specialties = [
     {
-        title: "Seguridad Industrial",
-        description: "Protocolos estrictos de seguridad en obra para proteger a nuestro personal y tu inversión.",
-        header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-amber-600/20 to-amber-900/20 border border-amber-500/10" />,
-        icon: <HardHat className="h-4 w-4 text-amber-500" />,
-        className: "md:col-span-2",
+        title: "Carpintería Residencial",
+        description: "Cocinas y Clósets a medida.",
+        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2000&auto=format&fit=crop",
+        className: "md:col-span-2 md:row-span-2 min-h-[400px] md:min-h-[600px]"
     },
     {
-        title: "Modelado BIM",
-        description: "Visualiza tu proyecto en 3D antes de poner el primer ladrillo.",
-        header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/5" />,
-        icon: <Building2 className="h-4 w-4 text-zinc-400" />,
-        className: "md:col-span-1",
+        title: "Remodelación Comercial",
+        description: "Locales y Restaurantes.",
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop",
+        className: "md:col-span-1 md:row-span-1 min-h-[300px]"
     },
     {
-        title: "Precisión Estructural",
-        description: "Cálculos exactos para garantizar la estabilidad de por vida.",
-        header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/5" />,
-        icon: <Ruler className="h-4 w-4 text-zinc-400" />,
-        className: "md:col-span-1",
-    },
-    {
-        title: "Ecodiseño",
-        description: "Construcciones sostenibles con sistemas de ahorro de energía y agua.",
-        header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-green-900/20 to-zinc-900 border border-green-500/10" />,
-        icon: <TreePine className="h-4 w-4 text-green-500" />,
-        className: "md:col-span-2",
-    },
+        title: "Recubrimientos",
+        description: "Paneles 3D y Tapices.",
+        image: "https://images.unsplash.com/photo-1623348737397-bb253965d53a?q=80&w=2000&auto=format&fit=crop",
+        className: "md:col-span-1 md:row-span-1 min-h-[300px]"
+    }
 ];
 
 export function BentoGrid() {
     return (
-        <section className="py-24 bg-[#0F1115]">
-            <div className="container px-4 md:px-6 mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 text-white tracking-tight">
-                        Estándares de Excelencia
-                    </h2>
-                    <p className="text-zinc-500 max-w-2xl mx-auto">
-                        Combinamos técnicas tradicionales de construcción con la tecnología más avanzada del mercado.
-                    </p>
-                </motion.div>
+        <section className="py-32 bg-background relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-[1400px]">
+                <div className="mb-16">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-primary tracking-[0.2em] text-sm md:text-md uppercase font-sans font-semibold mb-4"
+                    >
+                        Trabajo Que Dura
+                    </motion.h2>
+                    <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-6xl font-display font-light text-foreground"
+                    >
+                        Especialidades
+                    </motion.h3>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
-                    {items.map((item, i) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 auto-rows-min">
+                    {specialties.map((item, index) => (
                         <motion.div
-                            key={i}
+                            key={index}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                            whileHover={{ scale: 1.01 }}
-                            className={cn(
-                                "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-none p-6 bg-[#16191D] border border-white/5 justify-between flex flex-col space-y-4",
-                                item.className
-                            )}
+                            transition={{ duration: 0.8, delay: index * 0.1 }}
+                            className={`group relative overflow-hidden bg-surface rounded-none border border-white/5 cursor-pointer ${item.className}`}
                         >
-                            {item.header}
-                            <div className="group-hover/bento:translate-x-1 transition duration-200">
-                                <div className="flex items-center gap-2 mb-2">
-                                    {item.icon}
-                                    <div className="font-bold text-neutral-200">
-                                        {item.title}
+                            {/* Base Dark Background */}
+                            <div className="absolute inset-0 bg-surface z-10 transition-opacity duration-700 ease-in-out group-hover:opacity-0" />
+                            
+                            {/* Image Reveal */}
+                            <div className="absolute inset-0 z-0">
+                                <img 
+                                    src={item.image} 
+                                    alt={item.title} 
+                                    className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 ease-in-out"
+                                />
+                                <div className="absolute inset-0 bg-black/40" />
+                            </div>
+
+                            {/* Content */}
+                            <div className="relative z-20 h-full p-8 md:p-12 flex flex-col justify-end">
+                                <motion.div className="translate-y-4 group-hover:-translate-y-2 transition-transform duration-500 ease-out">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <h4 className="text-2xl md:text-4xl font-display font-medium text-foreground">
+                                            {item.title}
+                                        </h4>
+                                        <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-md">
+                                            <ArrowUpRight className="w-5 h-5 text-white" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="font-normal text-zinc-500 text-sm">
-                                    {item.description}
-                                </div>
+                                    <p className="text-foreground/70 font-sans font-light text-lg">
+                                        {item.description}
+                                    </p>
+                                </motion.div>
                             </div>
                         </motion.div>
                     ))}

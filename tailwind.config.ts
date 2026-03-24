@@ -8,22 +8,22 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                background: "#0F1115",
-                foreground: "#fafafa",
+                background: "#0A0A0A",
+                surface: "#121212",
+                foreground: "#F5F5F5",
                 primary: {
-                    DEFAULT: "#E5D3B3", // TAF Diseño Beige/Gold
-                    foreground: "#000000",
+                    DEFAULT: "#BCA37F", // Brushed Bronze
+                    foreground: "#0A0A0A",
                 },
                 accent: {
-                    amber: "#E5D3B3",
-                    steel: "#94A3B8",
+                    bronze: "#BCA37F",
+                    charcoal: "#1A1A1A",
                 },
-                border: "rgba(255,255,255,0.08)",
+                border: "rgba(255,255,255,0.1)",
             },
             fontFamily: {
-                sans: ["Inter", "sans-serif"],
-                display: ["Montserrat", "sans-serif"],
-                tech: ["Orbitron", "sans-serif"],
+                sans: ["Manrope", "sans-serif"],
+                display: ["Cormorant Garamond", "serif"],
             },
         },
     },
